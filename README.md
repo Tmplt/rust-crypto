@@ -5,7 +5,8 @@ This code-base will be stripped to only support the AES algorithm to then utiliz
 
 ## Project status
 
-- [x] Remove everything not AES
+- [x] Remove any files not related to AES or not depended upon by AES
+- [ ] Remove everything not AES
 - [ ] Rewrite non-rust components into Rust (esp. asm)
 - [ ] Rewrite code-base to support `#![no_std]` (if necessary)
 - [ ] ???
