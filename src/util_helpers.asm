@@ -6,13 +6,6 @@ endif
 
 .code
 
-rust_crypto_util_supports_aesni PROC public
-  ; Return false since the AES-NI function have not been
-  ; converted to assembly
-  xor eax, eax
-  ret
-rust_crypto_util_supports_aesni ENDP
-
 ; The rust_crypto_util_fixed_time_eq_asm for X86-64
 ifdef X64
 rust_crypto_util_fixed_time_eq_asm PROC public lhs:QWORD, rhs:QWORD, count:QWORD

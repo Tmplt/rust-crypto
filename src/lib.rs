@@ -28,6 +28,3 @@ mod simd;
 mod step_by;
 pub mod symmetriccipher;
 pub mod util;
-
-#[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
-pub mod aesni;

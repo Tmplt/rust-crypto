@@ -15,7 +15,6 @@ fn main() {
     if target.contains("msvc") && host.contains("windows") {
         let mut config = gcc::Config::new();
         config.file("src/util_helpers.asm");
-        config.file("src/aesni_helpers.asm");
         if target.contains("x86_64") {
             config.define("X64", None);
         }
@@ -24,7 +23,6 @@ fn main() {
     else {
         let mut cfg = gcc::Config::new();
         cfg.file("src/util_helpers.c");
-        cfg.file("src/aesni_helpers.c");
         if env::var_os("CC").is_none() {
             if host.contains("openbsd") {
                 // Use clang on openbsd since there have been reports that

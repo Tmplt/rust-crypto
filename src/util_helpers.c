@@ -8,42 +8,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#if defined(__i386__)
-uint32_t rust_crypto_util_supports_aesni() {
-    #ifdef __SSE__
-    uint32_t flags;
-    asm(
-        "pushl %%ebx; \
-         mov $1, %%eax; cpuid; \
-         popl %%ebx;"
-        : "=c" (flags) // output
-        : // input
-        : "eax", "edx" // clobbers
-    );
-    return flags & 0x02000000;
-    #else
-    return 0;
-    #endif
-}
-#endif
-
-#if defined(__x86_64__)
-uint32_t rust_crypto_util_supports_aesni() {
-    #ifdef __SSE__
-    uint32_t flags;
-    asm(
-        "mov $1, %%eax; cpuid;"
-        : "=c" (flags) // output
-        : // input
-        : "eax", "ebx", "edx" // clobbers
-    );
-    return flags & 0x02000000;
-    #else
-    return 0;
-    #endif
-}
-#endif
-
 #if defined(__i386__) || defined(__x86_64__)
 uint32_t rust_crypto_util_fixed_time_eq_asm(uint8_t* lhsp, uint8_t* rhsp, size_t count) {
     if (count == 0) {
